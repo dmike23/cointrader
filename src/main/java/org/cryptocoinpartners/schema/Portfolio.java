@@ -2061,8 +2061,8 @@ public class Portfolio extends EntityBase {
 
                                         Transaction trans = null;
                                         if (baseRealisedPnL
-                                            && !(currency.getSymbol().equals("USDT")
-                                                && this.getBaseAsset().getSymbol().equals("USD"))) {
+                                            && !("USDT".equals(currency.getSymbol())
+                                                && "USD".equals(this.getBaseAsset().getSymbol()))) {
                                           Amount BaseRealisedPnL =
                                               (RealisedPnL.times(
                                                       rate.getPrice(), Remainder.ROUND_EVEN))

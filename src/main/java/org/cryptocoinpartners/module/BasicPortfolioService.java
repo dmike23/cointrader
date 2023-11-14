@@ -762,7 +762,7 @@ public class BasicPortfolioService implements PortfolioService {
         Amount unrealisedPnL = DecimalAmount.ZERO;
 
         Position position = itf.next();
-        if (position.getAsset().getSymbol().equals("ETC")) log.debug("errr");
+        if ("ETC".equals(position.getAsset().getSymbol())) log.debug("errr");
         Asset currency =
             (position.getMarket().getTradedCurrency(position.getMarket()) == null)
                 ? position.getMarket().getQuote()
@@ -800,7 +800,7 @@ public class BasicPortfolioService implements PortfolioService {
                 ? position.getMarket().getQuote()
                 : position.getMarket().getTradedCurrency(position.getMarket());
         if (position.isOpen()) {
-          if (position.getMarket().getSymbol().equals("OKCOIN_THISWEEK:LTC.USD.THISWEEK"))
+          if ("OKCOIN_THISWEEK:LTC.USD.THISWEEK".equals(position.getMarket().getSymbol()))
             log.error("incorrect pnl");
           if (unrealisedPnLs.get(currency) != null) {
             unrealisedPnL = unrealisedPnLs.get(currency);
@@ -950,7 +950,7 @@ public class BasicPortfolioService implements PortfolioService {
     Map<Asset, Amount> unrealisedPnLs = getUnrealisedPnLs(market);
     for (Asset baseAsset : unrealisedPnLs.keySet()) {
       Listing listing = Listing.forPair(baseAsset, quoteAsset);
-      if (baseAsset.getSymbol().equals("LTC") && quoteAsset.getSymbol().equals("USD"))
+      if ("LTC".equals(baseAsset.getSymbol()) && "USD".equals(quoteAsset.getSymbol()))
         log.debug("error");
       Trade rate = getMarketPrice(listing);
       if (rate.getPriceAsBigDecimal().equals(BigDecimal.valueOf(239.5)))
@@ -1043,7 +1043,7 @@ public class BasicPortfolioService implements PortfolioService {
   public synchronized Amount getBaseUnrealisedPnL(
       Position position, Asset quoteAsset, DiscreteAmount marketPrice) {
     Amount baseUnrealisedPnL = DecimalAmount.ZERO;
-    if (position.getAsset().getSymbol().equals("ETC")) log.debug("Err");
+    if ("ETC".equals(position.getAsset().getSymbol())) log.debug("Err");
     Amount unrealisedPnL = getUnrealisedPnL(position, marketPrice);
     Asset tradedCurrency =
         position.getMarket().getTradedCurrency(position.getMarket()) == null

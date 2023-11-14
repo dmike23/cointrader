@@ -50,7 +50,7 @@ public class Parse {
 
 	public static PositionEffect positionEffect(TerminalNode node) throws ParseError {
 		String text = text(node);
-		PositionEffect positionEffect = (text.equals("close") || text.equals("Close") || text.equals("CLOSE")) ? PositionEffect.CLOSE : PositionEffect.OPEN;
+		PositionEffect positionEffect = ("close".equals(text) || "Close".equals(text) || "CLOSE".equals(text)) ? PositionEffect.CLOSE : PositionEffect.OPEN;
 		if (positionEffect == null)
 			throw new ParseError("Unknown position effect " + text);
 		return positionEffect;

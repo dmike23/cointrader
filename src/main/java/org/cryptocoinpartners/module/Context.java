@@ -408,7 +408,7 @@ public class Context {
         while (superclass != null) {
           if (superclass != null
               && superclass.getSimpleName() != null
-              && !superclass.getSimpleName().equals("Object")
+              && !"Object".equals(superclass.getSimpleName())
               && !superclass.getSimpleName().equals(method.getDeclaringClass().getSimpleName())
               && !loadedModules.contains(superclass.getSimpleName())) {
             filesToLoad.add(superclass.getSimpleName());
