@@ -108,7 +108,7 @@ public class JMXManager implements JMXManagerMBean {
 			portfolio = port;
 
 		Market market = (Market) Market.forSymbol(marketSymbol);
-		PositionEffect positionEffect = (openClose.equals("close") || openClose.equals("Close") || openClose.equals("CLOSE")) ? PositionEffect.CLOSE
+		PositionEffect positionEffect = ("close".equals(openClose) || "Close".equals(openClose) || "CLOSE".equals(openClose)) ? PositionEffect.CLOSE
 				: PositionEffect.OPEN;
 		DiscreteAmount volumeDiscrete = DecimalAmount.of(volume).toBasis(market.getVolumeBasis(), Remainder.DISCARD);
 		DiscreteAmount priceDiscrete = DecimalAmount.of(limitPrice).toBasis(market.getPriceBasis(), Remainder.DISCARD);
@@ -179,7 +179,7 @@ public class JMXManager implements JMXManagerMBean {
 		for (Portfolio port : portfolioService.getPortfolios())
 			portfolio = port;
 		Market market = (Market) Market.forSymbol(marketSymbol);
-		PositionEffect positionEffect = (openClose.equals("close") || openClose.equals("Close") || openClose.equals("CLOSE")) ? PositionEffect.CLOSE
+		PositionEffect positionEffect = ("close".equals(openClose) || "Close".equals(openClose) || "CLOSE".equals(openClose)) ? PositionEffect.CLOSE
 				: PositionEffect.OPEN;
 
 		DiscreteAmount volumeDiscrete = DecimalAmount.of(volume).toBasis(market.getVolumeBasis(), Remainder.DISCARD);
@@ -211,9 +211,9 @@ public class JMXManager implements JMXManagerMBean {
 		for (Portfolio port : portfolioService.getPortfolios())
 			portfolio = port;
 		Market market = (Market) Market.forSymbol(marketSymbol);
-		PositionEffect positionEffect = (openClose.equals("close") || openClose.equals("Close") || openClose.equals("CLOSE")) ? PositionEffect.CLOSE
+		PositionEffect positionEffect = ("close".equals(openClose) || "Close".equals(openClose) || "CLOSE".equals(openClose)) ? PositionEffect.CLOSE
 				: PositionEffect.OPEN;
-		Boolean usePosition = (position.equals("true") || openClose.equals("True") || openClose.equals("TRUE")) ? true : false;
+		Boolean usePosition = ("true".equals(position) || "True".equals(openClose) || "TRUE".equals(openClose)) ? true : false;
 
 		FillType fillType = FillType.STOP_LIMIT;
 		switch (type) {
@@ -295,10 +295,10 @@ public class JMXManager implements JMXManagerMBean {
 		for (Portfolio port : portfolioService.getPortfolios())
 			portfolio = port;
 		Market market = (Market) Market.forSymbol(marketSymbol);
-		PositionEffect positionEffect = (openClose.equals("close") || openClose.equals("Close") || openClose.equals("CLOSE")) ? PositionEffect.CLOSE
+		PositionEffect positionEffect = ("close".equals(openClose) || "Close".equals(openClose) || "CLOSE".equals(openClose)) ? PositionEffect.CLOSE
 				: PositionEffect.OPEN;
 
-		Boolean usePosition = (position.equals("true") || openClose.equals("True") || openClose.equals("TRUE")) ? true : false;
+		Boolean usePosition = ("true".equals(position) || "True".equals(openClose) || "TRUE".equals(openClose)) ? true : false;
 
 		FillType fillType = FillType.STOP_LIMIT;
 		switch (type) {

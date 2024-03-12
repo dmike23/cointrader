@@ -123,7 +123,7 @@ public class Transaction extends Event {
     this.getUuid();
     this.version = getVersion();
     this.fill = fill;
-    if (fill.getMarket().getExchange().getSymbol().equals("BITFINEX")) log.debug("test");
+    if ("BITFINEX".equals(fill.getMarket().getExchange().getSymbol())) log.debug("test");
     synchronized (this.fill) {
       this.fill.addTransaction(this);
     }
@@ -308,7 +308,7 @@ public class Transaction extends Event {
               ? TransactionType.BUY_RESERVATION
               : TransactionType.SELL_RESERVATION;
       this.order = order;
-      if (market.getExchange().getSymbol().equals("BITFINEX")) log.debug("test");
+      if ("BITFINEX".equals(market.getExchange().getSymbol())) log.debug("test");
       synchronized (this.order) {
         this.order.addTransaction(this);
       }

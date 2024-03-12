@@ -60,7 +60,7 @@ public class Prompt extends EntityBase {
 
   @Transient
   public Amount getMultiplier(Market market, Amount entryPrice, Amount exitPrice) {
-    if (market.getQuote().getSymbol().equals("USDT")) {
+    if ("USDT".equals(market.getQuote().getSymbol())) {
       return DecimalAmount.ONE;
     } else return (entryPrice.times(exitPrice, Remainder.ROUND_EVEN)).invert();
   }
@@ -103,23 +103,23 @@ public class Prompt extends EntityBase {
 
   @Transient
   public double getContractSize(Market market) {
-    if (market.getQuote().getSymbol().equals("USDT")) {
-      if (market.getBase().getSymbol().equals("BTC")) return 0.01;
-      if (market.getBase().getSymbol().equals("LTC")) return 1;
-      if (market.getBase().getSymbol().equals("SOL")) return 1;
-      if (market.getBase().getSymbol().equals("ETH")) return 0.1;
-      if (market.getBase().getSymbol().equals("DOT")) return 1;
-      if (market.getBase().getSymbol().equals("SNX")) return 1;
-      if (market.getBase().getSymbol().equals("YFI")) return 0.0001;
-      if (market.getBase().getSymbol().equals("SUSHI")) return 1;
-      if (market.getBase().getSymbol().equals("AAVE")) return 0.1;
-      if (market.getBase().getSymbol().equals("TRX")) return 1000;
-      if (market.getBase().getSymbol().equals("DOGE")) return 1000;
+    if ("USDT".equals(market.getQuote().getSymbol())) {
+      if ("BTC".equals(market.getBase().getSymbol())) return 0.01;
+      if ("LTC".equals(market.getBase().getSymbol())) return 1;
+      if ("SOL".equals(market.getBase().getSymbol())) return 1;
+      if ("ETH".equals(market.getBase().getSymbol())) return 0.1;
+      if ("DOT".equals(market.getBase().getSymbol())) return 1;
+      if ("SNX".equals(market.getBase().getSymbol())) return 1;
+      if ("YFI".equals(market.getBase().getSymbol())) return 0.0001;
+      if ("SUSHI".equals(market.getBase().getSymbol())) return 1;
+      if ("AAVE".equals(market.getBase().getSymbol())) return 0.1;
+      if ("TRX".equals(market.getBase().getSymbol())) return 1000;
+      if ("DOGE".equals(market.getBase().getSymbol())) return 1000;
 
       return 1 / this.contractSize;
 
     } else {
-      if (!market.getBase().getSymbol().equals("BTC")) return this.contractSize * 0.1;
+      if (!"BTC".equals(market.getBase().getSymbol())) return this.contractSize * 0.1;
       return this.contractSize;
     }
   }
@@ -231,7 +231,7 @@ public class Prompt extends EntityBase {
   public Asset getTradedCurrency(Market market) {
     if (getTradedCurrency() == null) {
 
-      if (market.getListing().getQuote().getSymbol().equals("USDT")) {
+      if ("USDT".equals(market.getListing().getQuote().getSymbol())) {
         return market.getListing().getQuote();
       } else return market.getListing().getBase();
     } else return getTradedCurrency();

@@ -274,8 +274,8 @@ public class ListingsMatrix {
           DiscreteAmount crossRateDiscerte;
 
           if (seedUSDT
-              && ((ccyToUpdate.getSymbol().equals("USD") && ccy.getSymbol().equals("USDT"))
-                  || (ccy.getSymbol().equals("USD") && ccyToUpdate.getSymbol().equals("USDT")))) {
+              && (("USD".equals(ccyToUpdate.getSymbol()) && "USDT".equals(ccy.getSymbol()))
+                  || ("USD".equals(ccy.getSymbol()) && "USDT".equals(ccyToUpdate.getSymbol())))) {
 
             crossRateDiscerte =
                 new DiscreteAmount(

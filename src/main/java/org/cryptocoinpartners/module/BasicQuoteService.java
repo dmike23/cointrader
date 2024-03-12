@@ -460,8 +460,8 @@ public class BasicQuoteService implements QuoteService {
     try {
 
       if (seedUSDT
-          && ((quote.getSymbol().equals("USD") && base.getSymbol().equals("USDT"))
-              || (base.getSymbol().equals("USD") && quote.getSymbol().equals("USDT")))) {
+          && (("USD".equals(quote.getSymbol()) && "USDT".equals(base.getSymbol()))
+              || ("USD".equals(base.getSymbol()) && "USDT".equals(quote.getSymbol())))) {
 
         rate =
             new DiscreteAmount(
@@ -492,7 +492,7 @@ public class BasicQuoteService implements QuoteService {
     } catch (java.lang.IllegalArgumentException e) {
       try {
         matrix.addAsset(base, quote, rate);
-        if (seedUSDT && quote.getSymbol().equals("USDT")) {
+        if (seedUSDT && "USDT".equals(quote.getSymbol())) {
 
           Currency USD = Currency.forSymbol("USD");
           matrix.addAsset(
