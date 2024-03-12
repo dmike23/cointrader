@@ -2,6 +2,7 @@ package org.cryptocoinpartners.module;
 
 import java.math.BigDecimal;
 import java.net.URL;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -260,7 +261,7 @@ public class MockTicker {
 	private final double averageVolumeCount = 100;
 	//  private final double volumeBasis = 1 / 1000.0;
 
-	private final Random random = new Random();
+	private final Random random = new SecureRandom();
 	private double currentPrice = 100;
 	private boolean running;
 
