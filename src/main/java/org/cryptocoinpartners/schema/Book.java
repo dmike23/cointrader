@@ -1,5 +1,6 @@
 package org.cryptocoinpartners.schema;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -768,6 +769,7 @@ public class Book extends MarketData implements Spread {
     //noinspection EmptyCatchBlock
     try {
       ObjectInputStream in = new ObjectInputStream(bin);
+      ObjectInputFilters.enableObjectFilterIfUnprotected(in);
       int size = in.readInt();
       for (int i = 0; i < size; i++) {
         long price = in.readLong();
@@ -804,6 +806,7 @@ public class Book extends MarketData implements Spread {
     ByteArrayInputStream bin = new ByteArrayInputStream(bytes);
     try {
       ObjectInputStream in = new ObjectInputStream(bin);
+      ObjectInputFilters.enableObjectFilterIfUnprotected(in);
       int size = in.readInt();
       for (int i = 0; i < size; i++) result.add(in.readInt());
       in.close();
