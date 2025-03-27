@@ -1,5 +1,6 @@
 package org.cryptocoinpartners.util;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Random;
 public class MathUtil {
 	public static int getPoissonRandom(double mean) {
 		double L = Math.exp(-mean);
-		Random random = new Random();
+		Random random = new SecureRandom();
 		int k = 0;
 		double p = 1.0;
 		do {
